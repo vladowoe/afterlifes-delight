@@ -57,4 +57,4 @@ Relog and fully restart the game while in Ghost State. Ghost State and all trans
 - the exact stew, whole pie, or slice being tested;
 - where it was stored before death;
 - counts before death, on the ghost, and in death storage;
-- the final lines of \`run/logs/latest.log\`.
+- the final lines of `run/logs/latest.log`.

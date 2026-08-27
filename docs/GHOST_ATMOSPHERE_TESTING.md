@@ -9,7 +9,7 @@
    - distant cold fog;
    - a cold blue-gray filter and subtle vignette;
    - gentle camera sway and field-of-view distortion.
-3. Nearby terrain must remain readable. The result must not resemble \`Blindness\` or \`Darkness\`.
+3. Nearby terrain must remain readable. The result must not resemble `Blindness` or `Darkness`.
 4. The HUD, chat, inventory, and item tooltips must retain their normal colors.
 5. Health, hunger, armor, mount health, and air meters must stay hidden while the local player is a ghost.
 6. In water and lava, the atmospheric fog and screen layer must not replace vanilla fluid fog.
@@ -25,7 +25,7 @@
 ## Sound
 
 - The ambience must use the Ambient/Environment sound category.
-- \`ghostAmbientVolume = 0.35\` should produce roughly 70% of the source sound's original volume before the global Ambient/Environment slider is applied.
+- `ghostAmbientVolume = 0.35` should produce roughly 70% of the source sound's original volume before the global Ambient/Environment slider is applied.
 - In a Soul Sand Valley, a second copy of the same ambience must not overlap the vanilla one.
 - No looping sound may remain after resurrection, leaving a world, or reconnecting.
 
@@ -39,24 +39,24 @@
 - The sun, moon, and clouds must retain their normal shapes while the cold filter is enabled.
 - Test the Overworld, Nether, End, water, and lava at several render distances and after switching between Fast and Fancy graphics.
 - With Iris installed, test at least once without a shader pack and once with an active shader pack.
-- If a particular shader pack is incompatible, set visual intensity to \`0.0\` and confirm that ambience can remain enabled separately.
+- If a particular shader pack is incompatible, set visual intensity to `0.0` and confirm that ambience can remain enabled separately.
 
 ## Client configuration
 
 After the first launch, open the Afterlife's Delight client settings:
 
-\`\`\`toml
+```toml
 enableGhostAtmosphere = true
 ghostAtmosphereIntensity = 1.0
 ghostAmbientVolume = 0.35
 enableGhostTransitionCamera = true
 ghostTransitionCameraIntensity = 1.0
-\`\`\`
+```
 
-- \`enableGhostAtmosphere\` enables or disables particles, fog, the cold filter, ambience, and ghost rendering.
-- \`ghostAtmosphereIntensity\` controls particles, ghost fog, and the cold filter from \`0.0\` to \`1.0\`.
-- \`ghostAmbientVolume\` controls ambience separately from \`0.0\` to \`1.0\`.
-- \`enableGhostTransitionCamera\` enables or disables camera motion when entering and leaving Ghost State.
-- \`ghostTransitionCameraIntensity\` controls camera sway and FOV distortion from \`0.0\` to \`2.0\`.
+- `enableGhostAtmosphere` enables or disables particles, fog, the cold filter, ambience, and ghost rendering.
+- `ghostAtmosphereIntensity` controls particles, ghost fog, and the cold filter from `0.0` to `1.0`.
+- `ghostAmbientVolume` controls ambience separately from `0.0` to `1.0`.
+- `enableGhostTransitionCamera` enables or disables camera motion when entering and leaving Ghost State.
+- `ghostTransitionCameraIntensity` controls camera sway and FOV distortion from `0.0` to `2.0`.
 
 Test changes both before entering Ghost State and while already in it. Server-common settings must not become editable from a client connected to someone else's server.

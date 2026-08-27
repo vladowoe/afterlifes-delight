@@ -2,9 +2,9 @@
 
 Launch the regular profile:
 
-\`\`\`powershell
+```powershell
 .\gradlew.bat runClient
-\`\`\`
+```
 
 ## 1. Creative tab and localization
 
@@ -34,9 +34,9 @@ The Wooden Pestle accepts any planks. The Stone Pestle accepts regular stone mat
 
 ## 3. Cutting Board
 
-- \`Echo Shard -> 4 Echo Dust\` works with every pestle.
-- \`Chorus Fruit -> 4 Ender Seasoning\` works with Iron, Golden, Diamond, or Netherite Pestles.
-- \`Netherite Scrap -> 4 Netherite Powder\` works only with the Netherite Pestle.
+- `Echo Shard -> 4 Echo Dust` works with every pestle.
+- `Chorus Fruit -> 4 Ender Seasoning` works with Iron, Golden, Diamond, or Netherite Pestles.
+- `Netherite Scrap -> 4 Netherite Powder` works only with the Netherite Pestle.
 
 Confirm that using an insufficient pestle does not consume the ingredient or damage the tool.
 

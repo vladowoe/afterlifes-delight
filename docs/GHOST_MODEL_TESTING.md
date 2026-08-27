@@ -44,4 +44,4 @@ Multiplayer checks:
 
 ## Visual compatibility
 
-Test classic and slim arm models, Fast and Fancy graphics, and Iris both without a shader pack and with one enabled. Include a screenshot and \`latest.log\` with any rendering artifact.
+Test classic and slim arm models, Fast and Fancy graphics, and Iris both without a shader pack and with one enabled. Include a screenshot and `latest.log` with any rendering artifact.

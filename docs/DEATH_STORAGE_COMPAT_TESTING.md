@@ -14,37 +14,37 @@ Use a separate test world for each death-storage mod. Do not run Corpse and Grav
 
 ### Corpse
 
-\`\`\`powershell
+```powershell
 .\gradlew.bat runClient -PcompatProfile=corpse
-\`\`\`
+```
 
-Profile version: Corpse \`1.21.1-1.1.13\`.
+Profile version: Corpse `1.21.1-1.1.13`.
 
 ### GraveStone Mod
 
-\`\`\`powershell
+```powershell
 .\gradlew.bat runClient -PcompatProfile=gravestone
-\`\`\`
+```
 
-Profile version: GraveStone Mod \`1.21.1-1.0.38\`.
+Profile version: GraveStone Mod `1.21.1-1.0.38`.
 
 ### Corpse with a stored backpack
 
-\`\`\`powershell
+```powershell
 .\gradlew.bat runClient -PcompatProfile=corpse_backpacks
-\`\`\`
+```
 
 ### GraveStone Mod with a stored backpack
 
-\`\`\`powershell
+```powershell
 .\gradlew.bat runClient -PcompatProfile=gravestone_backpacks
-\`\`\`
+```
 
-The backpack profiles use Sophisticated Backpacks \`1.21.1-3.25.77.2086\` and Sophisticated Core \`1.21.1-1.4.87.2270\`.
+The backpack profiles use Sophisticated Backpacks `1.21.1-3.25.77.2086` and Sophisticated Core `1.21.1-1.4.87.2270`.
 
 ## Vanilla drops
 
-1. Launch the regular \`runClient\` profile without \`compatProfile\`.
+1. Launch the regular `runClient` profile without `compatProfile`.
 2. Take several uniquely identifiable items and die.
 3. Confirm that each item drops exactly once near the death position.
 4. Confirm that the ghost cannot pick up those items.
@@ -57,7 +57,7 @@ The backpack profiles use Sophisticated Backpacks \`1.21.1-3.25.77.2086\` and So
 2. Die and press Respawn.
 3. The player must enter Ghost State near the death position, while Corpse creates a body containing the items.
 4. Right-click the corpse normally. Its inventory menu must not open.
-5. Open Death History with \`U\` and try to access the death inventory. No server inventory menu should open.
+5. Open Death History with `U` and try to access the death inventory. No server inventory menu should open.
 6. Relog and repeat the access attempts.
 7. Resurrect with Memorial Stew or Memorial Apple Pie.
 8. Open the corpse and recover the items.
@@ -79,7 +79,7 @@ The backpack profiles use Sophisticated Backpacks \`1.21.1-3.25.77.2086\` and So
 
 1. Create a backpack and fill it with several easily counted items.
 2. Place the backpack itself in a normal inventory slot, not inside another container.
-3. Die while using \`corpse_backpacks\` or \`gravestone_backpacks\`.
+3. Die while using `corpse_backpacks` or `gravestone_backpacks`.
 4. The backpack must appear inside the active death storage as one ItemStack with all nested contents preserved.
 5. The ghost must not be able to open the backpack by keybind or item use.
 6. Resurrect, recover the backpack, and check its contents.
@@ -112,8 +112,8 @@ The death-storage mod may choose a position for its corpse or grave, but the gho
 
 ## Information to include with a bug report
 
-- the active \`compatProfile\`;
+- the active `compatProfile`;
 - exact reproduction steps;
-- \`run/logs/latest.log\`;
+- `run/logs/latest.log`;
 - the crash report, if one was created;
 - where the items ended up: on the ghost, in the corpse or grave, on the ground, or in more than one place.

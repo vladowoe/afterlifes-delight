@@ -2,7 +2,7 @@
 
 ## Launch
 
-1. Launch \`runClient\` from the IDE or run \`.\gradlew.bat runClient\`.
+1. Launch `runClient` from the IDE or run `.\gradlew.bat runClient`.
 2. Create a test world.
 3. Confirm that Afterlife's Delight and Farmer's Delight both appear in the Mods list.
 4. Open Afterlife's Delight from the Mods menu and confirm that the client settings screen is available.
@@ -22,7 +22,7 @@
 11. Confirm that health, hunger, armor, mount health, and air meters are hidden.
 12. Drop an item from the inventory. Dropping must be allowed.
 13. Pick up an afterlife dish, place a whole afterlife pie, and confirm that ordinary items still cannot be collected.
-14. With \`allowGhostFlight\` enabled, toggle flight by double-tapping jump.
+14. With `allowGhostFlight` enabled, toggle flight by double-tapping jump.
 15. Leave the world and reconnect. Ghost State and its restrictions must persist.
 16. Fully restart the game and reconnect. Ghost State must still persist.
 17. Resurrect with Memorial Stew or a serving of Memorial Apple Pie. Normal abilities, interactions, HUD, and mob targeting must return immediately.
@@ -38,9 +38,9 @@
 
 After the first launch, set the following value in the common configuration:
 
-\`\`\`toml
+```toml
 allowGhostFlight = false
-\`\`\`
+```
 
 After a restart, ghosts must no longer receive flight. Resurrection must not remove Creative flight or flight granted by another mod.
 
