@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "minecraft:chorus_fruit"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 4,
+        "id": "afterlifes_delight:ender_seasoning"
+      }
+    }
+  ],
+  "tool": [
+    {
+      "tag": "afterlifes_delight:ender_seasoning_pestles"
+    }
+  ]
+}

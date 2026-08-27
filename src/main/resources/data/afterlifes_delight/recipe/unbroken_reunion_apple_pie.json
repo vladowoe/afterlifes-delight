@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "afterlifes_apple_pies",
+  "key": {
+    "#": {
+      "tag": "c:crops/wheat"
+    },
+    "G": {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    "O": {
+      "item": "afterlifes_delight:echo_crust"
+    },
+    "E": {
+      "item": "afterlifes_delight:echo_dust"
+    },
+    "N": {
+      "item": "afterlifes_delight:netherite_powder"
+    },
+    "R": {
+      "item": "afterlifes_delight:ender_seasoning"
+    }
+  },
+  "pattern": [
+    "###",
+    "ENR",
+    "GOG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "afterlifes_delight:unbroken_reunion_apple_pie"
+  }
+}

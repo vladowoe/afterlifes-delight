@@ -1,0 +1,28 @@
+{
+  "required": true,
+  "package": "dev.afterlifesdelight.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "EntityGhostMixin",
+    "LivingEntityGhostMixin",
+    "ServerGamePacketListenerHardcoreMixin",
+    "ServerPlayerMenuMixin",
+    "compat.GravestoneCompatMixin",
+    "compat.GravestoneCloneCompatMixin",
+    "compat.RagdollCorpseInteractionMixin",
+    "compat.SableRagdollCorpseGripMixin",
+    "compat.SableRagdollGrabPacketMixin",
+    "compat.SableRagdollPartBlockGhostCollisionMixin"
+  ],
+  "client": [
+    "client.ClientLevelGhostAtmosphereMixin",
+    "client.DeathScreenHardcoreMixin",
+    "client.LivingEntityGhostVisualMixin",
+    "client.MinecraftGhostInteractionMixin",
+    "client.PlayerRendererGhostArmMixin",
+    "client.SableRagdollGrabClientCooldownMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

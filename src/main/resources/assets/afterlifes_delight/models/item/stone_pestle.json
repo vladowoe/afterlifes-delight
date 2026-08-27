@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "afterlifes_delight:item/stone_pestle"
+  }
+}

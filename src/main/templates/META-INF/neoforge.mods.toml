@@ -1,0 +1,39 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+logoFile="afterlifes_delight.png"
+logoBlur=false
+description='''
+After pressing Respawn, return near where you died as an incorporeal ghost unable to affect the material world.
+Prepare supernatural stews with Farmer's Delight to reunite soul and body, carry a meal through death, or return to where you fell.
+'''
+
+[[mixins]]
+config="${mod_id}.mixins.json"
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="[${neo_version},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="farmersdelight"
+    type="required"
+    reason="Afterlife's Delight is an addon for Farmer's Delight."
+    versionRange="[1.3.2,)"
+    ordering="AFTER"
+    side="BOTH"

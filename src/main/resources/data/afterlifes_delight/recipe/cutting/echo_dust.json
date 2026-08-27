@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "minecraft:echo_shard"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 4,
+        "id": "afterlifes_delight:echo_dust"
+      }
+    }
+  ],
+  "tool": [
+    {
+      "tag": "afterlifes_delight:pestles"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_scrap"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 4,
+        "id": "afterlifes_delight:netherite_powder"
+      }
+    }
+  ],
+  "tool": [
+    {
+      "item": "afterlifes_delight:netherite_pestle"
+    }
+  ]
+}

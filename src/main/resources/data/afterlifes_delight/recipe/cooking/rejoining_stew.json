@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 400,
+  "experience": 2.0,
+  "ingredients": [
+    {
+      "item": "farmersdelight:minced_beef"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "item": "afterlifes_delight:echo_dust"
+    },
+    {
+      "item": "afterlifes_delight:ender_seasoning"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "container": {
+    "count": 1,
+    "id": "farmersdelight:bone_broth"
+  },
+  "result": {
+    "count": 1,
+    "id": "afterlifes_delight:rejoining_stew"
+  }
+}

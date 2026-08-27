@@ -1,0 +1,9 @@
+{
+  "parent": "farmersdelight:block/template_pie_slice3",
+  "textures": {
+    "bottom": "afterlifes_delight:block/echo_pie_bottom",
+    "inner": "afterlifes_delight:block/deathless_devotion_apple_pie_inner",
+    "side": "afterlifes_delight:block/echo_pie_side",
+    "top": "afterlifes_delight:block/deathless_devotion_apple_pie_top"
+  }
+}

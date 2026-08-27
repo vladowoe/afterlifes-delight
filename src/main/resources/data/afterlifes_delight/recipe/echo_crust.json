@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "afterlifes_delight:echo_dust"
+    },
+    "M": {
+      "item": "minecraft:milk_bucket"
+    },
+    "W": {
+      "tag": "c:crops/wheat"
+    }
+  },
+  "pattern": [
+    " E ",
+    "WMW",
+    " W "
+  ],
+  "result": {
+    "count": 1,
+    "id": "afterlifes_delight:echo_crust"
+  }
+}

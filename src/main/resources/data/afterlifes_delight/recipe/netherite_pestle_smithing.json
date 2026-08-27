@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "base": {
+    "item": "afterlifes_delight:diamond_pestle"
+  },
+  "result": {
+    "count": 1,
+    "id": "afterlifes_delight:netherite_pestle"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

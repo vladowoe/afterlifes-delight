@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "afterlifes_apple_pies",
+  "key": {
+    "#": {
+      "item": "afterlifes_delight:deathless_devotion_apple_pie_slice"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "afterlifes_delight:deathless_devotion_apple_pie"
+  }
+}
