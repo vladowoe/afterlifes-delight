@@ -1,47 +1,47 @@
-# Проверка модели призрака
+# Ghost model testing
 
-## Третье лицо
+## Third-person view
 
-1. До смерти переключитесь на вид от третьего лица и запомните обычный вид скина.
-2. Умрите и возродитесь призраком.
-3. За три секунды модель должна:
-   - стать примерно наполовину прозрачной;
-   - получить холодный голубовато-серый оттенок;
-   - сохранить узнаваемые детали скина;
-   - получить слабый светящийся слой, заметный в темноте;
-   - перестать отбрасывать обычную плотную тень.
-4. Анимации ходьбы, полёта, приседания и употребления рагу должны остаться обычными.
+1. Before dying, switch to third-person view and note the normal appearance of the skin.
+2. Die and enter Ghost State.
+3. Over roughly three seconds, the model should:
+   - become strongly translucent;
+   - gain a cold blue-gray tint;
+   - retain recognizable skin details;
+   - gain a subtle emissive layer that remains visible in darkness;
+   - stop casting a normal solid shadow.
+4. Walking, flying, sneaking, item dropping, pie placement, and eating animations must remain normal.
 
-## Шлейф движения
+## Motion trail
 
-1. Переключитесь на третье лицо и начните идти или лететь призраком.
-2. За моделью должны появиться три голубых эхо-копии в её недавних положениях.
-3. Ближайшая копия должна быть самой заметной, дальняя — самой слабой.
-4. После остановки шлейф должен плавно догнать игрока и исчезнуть без неподвижного ореола.
-5. Телепортация не должна оставлять длинную цепочку копий между начальной и конечной точками.
-6. В первом лице собственные копии не должны перекрывать обзор.
+1. Switch to third-person view and walk or fly as a ghost.
+2. Three pale-blue echo copies should appear at the model's recent positions.
+3. The nearest copy should be strongest and the farthest copy weakest.
+4. After stopping, the trail should catch up and disappear without leaving a stationary halo.
+5. Teleportation must not leave a long chain of copies between the origin and destination.
+6. The local player's copies must not obstruct first-person view.
 
-Шлейф не создаёт сущностей и не использует сетевые пакеты. Одновременно отображаются максимум три копии для каждого из четырёх ближайших призраков в радиусе 32 блоков.
+The trail creates no entities and sends no additional network packets. At most three copies are rendered for each of the four nearest ghosts within 32 blocks.
 
-## Первое лицо
+## First-person view
 
-- Пустая рука и внешний слой рукава должны выглядеть так же полупрозрачно и холодно, как модель в третьем лице.
-- Предмет в руке остаётся материальным и не обязан становиться прозрачным.
-- Полупрозрачность не должна создавать чёрные полигоны или мерцание рукава.
+- The empty hand and outer sleeve layer should be as translucent and cold-tinted as the third-person model.
+- A held item remains material and does not need to become translucent.
+- Translucency must not create black polygons or sleeve flicker.
 
-## Воскрешение
+## Resurrection
 
-Съешьте любое воскрешающее рагу. Вместе с исчезновением атмосферного фильтра модель, руки, освещение и тень должны вернуться к обычному виду.
+Resurrect with any afterlife food. As the atmosphere fades, the model, arms, lighting, and shadow must return to their normal appearance.
 
-## Другой игрок
+## Other players
 
-Мультиплеерная проверка:
+Multiplayer checks:
 
-- живой игрок должен видеть полупрозрачную модель призрака;
-- живой игрок должен видеть шлейф движущегося призрака с расстояния до 32 блоков;
-- модель живого игрока не должна получать призрачный эффект;
-- Ghost State одного игрока не должен включать экранный фильтр у другого.
+- a living player must see the translucent ghost model;
+- a living player must see the motion trail of a ghost within 32 blocks;
+- a living player model must not receive the ghost effect;
+- one player's Ghost State must not enable the screen filter for another player.
 
-## Совместимость визуала
+## Visual compatibility
 
-Проверить обычную и узкую модели рук, оба режима графики и Iris с выключенным и включённым шейдерпаком. При артефакте приложить скриншот и `latest.log`.
+Test classic and slim arm models, Fast and Fancy graphics, and Iris both without a shader pack and with one enabled. Include a screenshot and \`latest.log\` with any rendering artifact.

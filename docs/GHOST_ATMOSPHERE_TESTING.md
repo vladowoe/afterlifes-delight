@@ -1,55 +1,62 @@
-# Проверка атмосферы призрака
+# Ghost atmosphere testing
 
-## Основной сценарий
+## Main scenario
 
-1. Умрите и нажмите «Возродиться».
-2. В течение примерно трёх секунд должны плавно проявиться:
-   - редкий серый пепел и отдельные белые частицы;
-   - тихий эмбиент Долины песка душ;
-   - дальняя холодная дымка;
-   - лёгкий серо-синий фильтр и слабая виньетка.
-3. Ближайшее пространство должно оставаться читаемым. Эффект не должен напоминать `Blindness` или `Darkness`.
-4. HUD, чат, инвентарь и подсказки предметов должны сохранять обычные цвета.
-5. В воде и лаве атмосферный туман и экранный слой не должны заменять ванильный туман жидкости.
-6. Съешьте любое воскрешающее рагу. Эмбиент и визуал должны плавно исчезнуть примерно за две секунды.
+1. Die and press Respawn.
+2. During the next three seconds, the following effects should fade in smoothly:
+   - sparse gray ash and occasional pale particles;
+   - quiet Soul Sand Valley ambience;
+   - distant cold fog;
+   - a cold blue-gray filter and subtle vignette;
+   - gentle camera sway and field-of-view distortion.
+3. Nearby terrain must remain readable. The result must not resemble \`Blindness\` or \`Darkness\`.
+4. The HUD, chat, inventory, and item tooltips must retain their normal colors.
+5. Health, hunger, armor, mount health, and air meters must stay hidden while the local player is a ghost.
+6. In water and lava, the atmospheric fog and screen layer must not replace vanilla fluid fog.
+7. Resurrect with any afterlife food. The ambience and visual effects should fade out smoothly over roughly two seconds.
 
-## Частицы
+## Particles
 
-- Частицы должны быть распределены по пространству, а не вращаться плотным кольцом около тела.
-- Настройки Minecraft «Все / Уменьшено / Минимум» должны влиять на их количество.
-- Под водой частицы атмосферы не создаются.
-- Перемещение между измерениями и перезаход не должны удваивать частицы.
+- Particles must be distributed through the surrounding space rather than orbiting in a dense ring around the player.
+- Minecraft's All, Decreased, and Minimal particle settings must affect their density.
+- Atmospheric particles must not spawn underwater.
+- Dimension changes and relogs must not duplicate the particle emitter.
 
-## Звук
+## Sound
 
-- Эмбиент использует категорию звуков «Окружение».
-- Значение `ghostAmbientVolume = 0.35` даёт около 70% исходной громкости звука до применения общего ползунка «Окружение».
-- В Долине песка душ дополнительная копия того же эмбиента не должна накладываться поверх ванильной.
-- После воскрешения, выхода из мира и повторного подключения не должно оставаться зависшего звука.
+- The ambience must use the Ambient/Environment sound category.
+- \`ghostAmbientVolume = 0.35\` should produce roughly 70% of the source sound's original volume before the global Ambient/Environment slider is applied.
+- In a Soul Sand Valley, a second copy of the same ambience must not overlap the vanilla one.
+- No looping sound may remain after resurrection, leaving a world, or reconnecting.
 
-## Туман и фильтр
+## Fog and filter
 
-- Штатный туман должен по-прежнему скрывать настоящую границу прорисовки чанков.
-- Призрачный туман должен плавно проявляться примерно с 18 блоков и сгущаться к 152, не отключая штатное скрытие границы прорисовки.
-- Цвет исходного измерения должен сохраняться, но становиться чуть холоднее и менее насыщенным.
-- На восходе, закате и при взгляде ниже горизонта в скайбоксе не должны появляться служебные прямоугольники или чёрные полосы.
-- Фильтр не должен ломать альфа-канал листвы, воды, облаков или другой полупрозрачной геометрии.
-- Солнце, луна и облака должны сохранять обычную форму при включённом холодном фильтре.
-- При включённом Iris проверить как минимум один запуск без шейдерпака и один с активным шейдерпаком.
-- При проблеме с конкретным шейдерпаком временно установите интенсивность визуала в `0.0`, не отключая звук отдельно.
+- Vanilla fog must continue to hide the actual chunk-render boundary.
+- Ghost fog should begin fading in at roughly 18 blocks and become dense toward 152 blocks without disabling vanilla render-distance fog.
+- The dimension's original color palette should remain recognizable, but appear colder and less saturated.
+- Sunrise, sunset, and views below the horizon must not reveal debug rectangles, black bands, or the void renderer.
+- The filter must not break the alpha channel of leaves, water, clouds, or other translucent geometry.
+- The sun, moon, and clouds must retain their normal shapes while the cold filter is enabled.
+- Test the Overworld, Nether, End, water, and lava at several render distances and after switching between Fast and Fancy graphics.
+- With Iris installed, test at least once without a shader pack and once with an active shader pack.
+- If a particular shader pack is incompatible, set visual intensity to \`0.0\` and confirm that ambience can remain enabled separately.
 
-## Клиентский конфиг
+## Client configuration
 
-После первого запуска откройте клиентский конфиг Afterlife's Delight:
+After the first launch, open the Afterlife's Delight client settings:
 
-```toml
+\`\`\`toml
 enableGhostAtmosphere = true
 ghostAtmosphereIntensity = 1.0
 ghostAmbientVolume = 0.35
-```
+enableGhostTransitionCamera = true
+ghostTransitionCameraIntensity = 1.0
+\`\`\`
 
-- `enableGhostAtmosphere` полностью включает или выключает атмосферу.
-- `ghostAtmosphereIntensity` регулирует частицы, призрачный туман и холодный фильтр от `0.0` до `1.0`.
-- `ghostAmbientVolume` отдельно регулирует громкость эмбиента от `0.0` до `1.0`.
+- \`enableGhostAtmosphere\` enables or disables particles, fog, the cold filter, ambience, and ghost rendering.
+- \`ghostAtmosphereIntensity\` controls particles, ghost fog, and the cold filter from \`0.0\` to \`1.0\`.
+- \`ghostAmbientVolume\` controls ambience separately from \`0.0\` to \`1.0\`.
+- \`enableGhostTransitionCamera\` enables or disables camera motion when entering and leaving Ghost State.
+- \`ghostTransitionCameraIntensity\` controls camera sway and FOV distortion from \`0.0\` to \`2.0\`.
 
-Изменения нужно проверить как при новом входе в Ghost State, так и уже находясь в нём.
+Test changes both before entering Ghost State and while already in it. Server-common settings must not become editable from a client connected to someone else's server.

@@ -1,40 +1,51 @@
-# Проверка сцены воскрешения
+# Death and resurrection effects testing
 
-## Основной сценарий
+## Entering Ghost State
 
-1. Станьте призраком и переключитесь на вид от третьего лица.
-2. Съешьте Поминальное рагу.
-3. Три полупрозрачные эхо-копии модели должны плавно сходиться с телом в прежнем темпе.
-4. Одновременно из позиции игрока должен прозвучать `minecraft:entity.warden.sonic_boom`.
-5. Дополнительных частиц самого воскрешения быть не должно.
-6. Эффект длится около полутора секунд и не блокирует управление.
-7. После него игрок должен оставаться полностью живым, непрозрачным и без призрачной атмосферы.
+1. Die and remain on the death screen.
+2. No ghost ambience, particles, filter, camera sway, or death sound should begin yet.
+3. Press Respawn or **Enter the Spirit World** in Hardcore.
+4. Once Ghost State is confirmed, \`minecraft:entity.warden.sonic_charge\` should play from the player.
+5. The camera transition and atmosphere should fade in without delaying controls.
 
-## Варианты приправ
+A canceled death must not play the death sound or start any Ghost State effect.
 
-- Поминальное рагу и Рагу посмертной верности: голубые эхо-копии.
-- Рагу воссоединения и Рагу неразрывного воссоединения: фиолетовые эхо-копии; сначала завершается телепортация, затем сцена проигрывается уже в конечной точке.
+## Resurrection scene
 
-Все варианты по-прежнему должны восстанавливать полные здоровье и голод. Телепортирующие блюда должны сохранять прежнюю безопасную точку назначения.
+1. Enter Ghost State and switch to third-person view.
+2. Resurrect with Memorial Stew or Memorial Apple Pie.
+3. Three translucent echo shells should merge smoothly into the body at the established pace.
+4. \`minecraft:entity.warden.sonic_boom\` should play from the player's position.
+5. The resurrection itself must not spawn an additional cheap-looking particle burst.
+6. The scene should last roughly one and a half seconds without blocking controls.
+7. The player must finish fully alive, opaque, and free of ghost atmosphere.
 
-## Атмосфера и звук
+## Seasoning variants
 
-- При подтверждённой смерти живого игрока должен прозвучать `minecraft:entity.warden.sonic_charge`; отменённая смерть не должна запускать звук.
-- Синий фильтр, виньетка и призрачный туман должны выглядеть так же, как до появления сцены воскрешения.
-- Они плавно исчезают вместе с выходом из Ghost State; сцена не вмешивается в постфильтр.
-- При появлении верных блюд после смерти должен быть слышен звук телепортации хоруса.
-- При переносе души к месту смерти должен быть слышен такой же звук в конечной точке.
-- При самом воскрешении по умолчанию должен быть слышен `minecraft:entity.warden.sonic_boom`.
-- В общем конфиге `deathSound` и `resurrectionSound` можно указать другие ID звуковых событий или `none`, чтобы отключить соответствующий звук.
+- Memorial and Deathless Devotion food uses blue echo shells.
+- Rejoining and Unbroken Reunion food uses purple echo shells. Teleportation must finish first, then the scene must play at the destination.
 
-Кандидаты для дальнейшего сравнения: `minecraft:block.sculk_shrieker.shriek`, `minecraft:block.trial_spawner.spawn_mob`, `minecraft:entity.warden.dig`, `minecraft:entity.warden.heartbeat`, `minecraft:entity.warden.nearby_close`.
+Every variant must restore full health and hunger. Food containing Ender Seasoning must retain the safe destination behavior near the saved death position.
 
-## Камера и графика
+## Atmosphere and sound
 
-Проверить первое и третье лицо, разрешения 16:9 и 21:9, быструю смену камеры, обычную/улучшенную графику, а также Iris без шейдерпака и с ним. Эхо-копии не должны закрывать обзор сплошным цветом, а призрачный фильтр и туман — пропадать раньше выхода из Ghost State.
+- The blue filter, vignette, and ghost fog must look the same as before the resurrection scene was added.
+- They fade out with Ghost State; the scene must not bypass or prematurely disable the post-processing filter.
+- When death-following food reaches the soul, the chorus-fruit teleport sound and portal particles must play once.
+- When Ender Seasoning returns the soul to its death position, the same teleport effect must play at the destination.
+- The default resurrection sound is \`minecraft:entity.warden.sonic_boom\`.
+- The common \`deathSound\` and \`resurrectionSound\` settings accept \`sound_id volume pitch\`, a legacy sound ID by itself, or \`none\`.
 
-## Повтор и перезаход
+Candidates for later comparison: \`minecraft:block.sculk_shrieker.shriek\`, \`minecraft:block.trial_spawner.spawn_mob\`, \`minecraft:entity.warden.dig\`, \`minecraft:entity.warden.heartbeat\`, and \`minecraft:entity.warden.nearby_close\`.
 
-- Два последовательных воскрешения не должны оставлять старые нити или звук.
-- Выход из мира во время сцены должен очистить клиентскую анимацию.
-- Воскрешение после перезахода призраком должно запускать ту же сцену.
+## Camera and graphics
+
+Test first- and third-person views, 16:9 and 21:9 resolutions, rapid camera switching, Fast and Fancy graphics, and Iris both without and with a shader pack. Echo shells must not fill the view with a solid color, and ghost fog or the cold filter must not disappear before Ghost State ends.
+
+Set \`enableGhostTransitionCamera = false\` and confirm that only camera motion is disabled. Set \`ghostTransitionCameraIntensity\` to \`0.0\`, \`1.0\`, and \`2.0\` and confirm that the transition scales without changing resurrection timing.
+
+## Repetition and relogging
+
+- Two consecutive resurrections must not leave old echo shells, camera motion, or sound.
+- Leaving the world during the scene must clear the client animation.
+- Resurrecting after relogging as a ghost must start the same scene.
