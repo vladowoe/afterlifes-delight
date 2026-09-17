@@ -23,9 +23,16 @@ Every resurrection dish restores health and hunger completely. Living players ca
 
 ## Compatibility
 
-Afterlife's Delight works without `keepInventory` and has been tested with Corpse, GraveStone Mod, Sophisticated Backpacks stored inside corpses and graves, Sable: Ragdoll Corpse, and Sable's physical ragdolls.
+Afterlife's Delight works without `keepInventory`.
 
-Ghosts cannot recover ordinary belongings before resurrection. Afterlife food prepared to follow the soul is transferred without duplication. When physical ragdolls are installed, a corpse may slip from a ghost's hands; the chance and pickup cooldown are configurable.
+### Tested compatibility
+
+- [Corpse](https://modrinth.com/mod/corpse)
+- [GraveStone Mod](https://modrinth.com/mod/gravestone-mod)
+- [Sophisticated Backpacks](https://modrinth.com/mod/sophisticated-backpacks) stored inside corpses and graves
+- [Sable: Ragdolls](https://modrinth.com/mod/sable-ragdolls), including Ragdoll Corpse
+- [Hardcore Lite](https://modrinth.com/mod/hardcore-lite)
+- [Sodium](https://modrinth.com/mod/sodium) and [Iris](https://modrinth.com/mod/iris) without a shader pack
 
 ## Requirements
 

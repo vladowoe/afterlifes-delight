@@ -128,7 +128,8 @@ def supportedCompatProfiles = [
         'gravestone',
         'backpacks',
         'corpse_backpacks',
-        'gravestone_backpacks'
+        'gravestone_backpacks',
+        'hardcore_lite'
 ]
 
 if (!supportedCompatProfiles.contains(compatProfile)) {
@@ -149,6 +150,9 @@ dependencies {
             || compatProfile == 'gravestone_backpacks') {
         localRuntime "maven.modrinth:sophisticated-core:${sophisticated_core_version}"
         localRuntime "maven.modrinth:sophisticated-backpacks:${sophisticated_backpacks_version}"
+    }
+    if (compatProfile == 'hardcore_lite') {
+        localRuntime "maven.modrinth:UopFqYzZ:${hardcore_lite_version}"
     }
 }
 

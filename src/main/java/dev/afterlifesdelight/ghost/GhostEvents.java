@@ -2,6 +2,7 @@ package dev.afterlifesdelight.ghost;
 
 import dev.afterlifesdelight.AfterlifesDelight;
 import dev.afterlifesdelight.block.AfterlifePieBlock;
+import dev.afterlifesdelight.compat.HardcoreLiteCompat;
 import dev.afterlifesdelight.compat.SableGrabCleanup;
 import dev.afterlifesdelight.registry.ModItems;
 import net.minecraft.server.level.ServerPlayer;
@@ -35,6 +36,13 @@ public final class GhostEvents {
             if (GhostManager.isGhost(player)) {
                 event.setCanceled(true);
                 player.setHealth(Math.max(1.0F, player.getHealth()));
+                return;
+            }
+
+            if (HardcoreLiteCompat.isLoaded()) {
+                if (HardcoreLiteCompat.beginFinalDeath(player)) {
+                    GhostManager.prepareDeathFollowingFoodTransfer(player);
+                }
             } else {
                 GhostManager.prepareDeathFollowingFoodTransfer(player);
             }
@@ -47,8 +55,18 @@ public final class GhostEvents {
             return;
         }
 
+        boolean hardcoreLiteLoaded = HardcoreLiteCompat.isLoaded();
+        boolean shouldBecomeGhost = !hardcoreLiteLoaded
+                || HardcoreLiteCompat.consumePendingFinalDeath(player);
+        if (!shouldBecomeGhost) {
+            return;
+        }
+
         if (event.isCanceled()) {
             GhostManager.restoreDeathFollowingFoodAfterCanceledDeath(player);
+            if (hardcoreLiteLoaded) {
+                HardcoreLiteCompat.restoreCanceledFinalDeath(player);
+            }
         } else {
             GhostManager.recordDeath(player);
         }
@@ -83,6 +101,8 @@ public final class GhostEvents {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
         if (event.getEntity() instanceof ServerPlayer player && GhostManager.hasGhostRecord(player)) {
+            HardcoreLiteCompat.restoreLastHeartForGhost(player);
+            HardcoreLiteCompat.restorePlayableGameMode(player);
             GhostManager.restoreAfterRespawn(player);
         }
     }
@@ -94,15 +114,24 @@ public final class GhostEvents {
         }
 
         if (GhostManager.isGhost(player)) {
-            player.getServer().execute(() -> GhostManager.restoreGhostSession(player));
+            player.getServer().execute(() -> {
+                HardcoreLiteCompat.restoreLastHeartForGhost(player);
+                HardcoreLiteCompat.restorePlayableGameMode(player);
+                GhostManager.restoreGhostSession(player);
+            });
         } else if (GhostManager.hasGhostRecord(player)) {
-            player.getServer().execute(() -> GhostManager.restoreAfterRespawn(player));
+            player.getServer().execute(() -> {
+                HardcoreLiteCompat.restoreLastHeartForGhost(player);
+                HardcoreLiteCompat.restorePlayableGameMode(player);
+                GhostManager.restoreAfterRespawn(player);
+            });
         }
     }
 
     @SubscribeEvent
     public static void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
+            HardcoreLiteCompat.clearPendingFinalDeath(player);
             GhostManager.onLogout(player);
             GhostCorpseGrabCooldowns.clear(player);
             SableGrabCleanup.clear(player);

@@ -47,17 +47,16 @@ Every pestle can grind Echo Shards. Iron-tier pestles and above can process Chor
 
 ## Compatibility
 
-Afterlife's Delight works without `keepInventory` and has been tested with:
+Afterlife's Delight works without `keepInventory`.
 
-- Corpse
-- GraveStone Mod
-- Sophisticated Backpacks stored inside corpses and graves
-- Sable: Ragdoll Corpse and Sable's physical ragdolls
-- Sodium and Iris without a shader pack
+### Tested compatibility
 
-Ghosts cannot recover ordinary inventory items until they are resurrected. Resurrection food prepared to follow the soul is transferred without duplication.
-
-When physical ragdolls are installed, a corpse may slip from a ghost's hands. The chance and pickup cooldown are configurable.
+- [Corpse](https://modrinth.com/mod/corpse)
+- [GraveStone Mod](https://modrinth.com/mod/gravestone-mod)
+- [Sophisticated Backpacks](https://modrinth.com/mod/sophisticated-backpacks) stored inside corpses and graves
+- [Sable: Ragdolls](https://modrinth.com/mod/sable-ragdolls), including Ragdoll Corpse
+- [Hardcore Lite](https://modrinth.com/mod/hardcore-lite)
+- [Sodium](https://modrinth.com/mod/sodium) and [Iris](https://modrinth.com/mod/iris) without a shader pack
 
 ## Requirements
 
@@ -95,7 +94,7 @@ Launch a development client or server:
 .\gradlew.bat runServer
 ```
 
-Compatibility test profiles are available for `corpse`, `gravestone`, `backpacks`, `corpse_backpacks`, and `gravestone_backpacks`. Manual testing scenarios are documented in [`docs`](docs/).
+Compatibility test profiles are available for `corpse`, `gravestone`, `backpacks`, `corpse_backpacks`, `gravestone_backpacks`, and `hardcore_lite`. Manual testing scenarios are documented in [`docs`](docs/).
 
 ## License
 

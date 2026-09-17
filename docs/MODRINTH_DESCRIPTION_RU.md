@@ -23,9 +23,16 @@ Afterlife's Delight создан для игры на хардкоре с дру
 
 ## Совместимость
 
-Afterlife's Delight работает без `keepInventory` и проверен с Corpse, GraveStone Mod, Sophisticated Backpacks внутри трупов и могил, Sable: Ragdoll Corpse и физическими рэгдоллами Sable.
+Afterlife's Delight работает без `keepInventory`.
 
-Призрак не может забрать обычные вещи до воскрешения. Загробная еда, приготовленная так, чтобы следовать за душой, переносится без дублирования. При использовании физических рэгдоллов труп может выскользнуть из призрачных рук; вероятность и задержка повторного захвата настраиваются.
+### Проверенная совместимость
+
+- [Corpse](https://modrinth.com/mod/corpse)
+- [GraveStone Mod](https://modrinth.com/mod/gravestone-mod)
+- [Sophisticated Backpacks](https://modrinth.com/mod/sophisticated-backpacks) внутри трупов и могил
+- [Sable: Ragdolls](https://modrinth.com/mod/sable-ragdolls), включая Ragdoll Corpse
+- [Hardcore Lite](https://modrinth.com/mod/hardcore-lite)
+- [Sodium](https://modrinth.com/mod/sodium) и [Iris](https://modrinth.com/mod/iris) без активного набора шейдеров
 
 ## Требования
 
