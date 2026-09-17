@@ -37,10 +37,10 @@ public final class HardcoreLiteCompat {
     }
 
     /**
-     * Returns whether this death should enter Afterlife's Delight's ghost flow.
-     * Without Hardcore Lite every normal death keeps the existing behaviour.
-     * With Hardcore Lite installed only its final, spectator-producing death
-     * becomes a ghost death.
+     * Returns whether this death looks like a death that should enter the ghost
+     * flow. Without Hardcore Lite every normal death keeps the existing
+     * Afterlife's Delight behaviour. With Hardcore Lite installed only its
+     * spectator-producing final death qualifies.
      */
     public static boolean shouldBecomeGhost(ServerPlayer player) {
         return !isLoaded() || player.gameMode.getGameModeForPlayer() == GameType.SPECTATOR;
@@ -50,22 +50,33 @@ public final class HardcoreLiteCompat {
      * Hardcore Lite consumes the last heart before the death event is fired.
      * Preserve one heart in its saved state so resurrection returns the player
      * to a valid Hardcore Lite state and a later death can become final again.
+     *
+     * @return {@code true} when the integration is ready for the ghost flow;
+     *         {@code false} when this is not a Hardcore Lite final death or the
+     *         optional bridge could not be prepared safely.
      */
-    public static void preserveLastHeartForGhost(ServerPlayer player) {
-        if (!isLoaded() || player.gameMode.getGameModeForPlayer() != GameType.SPECTATOR) {
-            return;
+    public static boolean preserveLastHeartForGhost(ServerPlayer player) {
+        if (!isLoaded()) {
+            return true;
+        }
+        if (player.gameMode.getGameModeForPlayer() != GameType.SPECTATOR) {
+            return false;
         }
 
         try {
             Object playerHearts = getPlayerHearts(player);
             if (playerHearts == null) {
-                return;
+                return false;
             }
 
             Method getNumberOfHearts = playerHearts.getClass().getMethod("getNumberOfHearts");
             int heartModifier = ((Number) getNumberOfHearts.invoke(playerHearts)).intValue();
+
+            // One remaining heart is stored as -9. Hardcore Lite's final death
+            // reaches -10 before setting spectator. A second call during the
+            // same death event is intentionally idempotent at -9.
             if (heartModifier > ONE_HEART_MODIFIER) {
-                return;
+                return false;
             }
 
             Method setNumberOfHearts = playerHearts.getClass().getMethod("setNumberOfHearts", int.class);
@@ -75,8 +86,10 @@ public final class HardcoreLiteCompat {
             if (maxHealth != null) {
                 maxHealth.setBaseValue(ONE_HEART_HEALTH);
             }
+            return true;
         } catch (ReflectiveOperationException | RuntimeException exception) {
             logReflectionFailure(exception);
+            return false;
         }
     }
 
@@ -117,7 +130,7 @@ public final class HardcoreLiteCompat {
         reflectionFailureLogged = true;
         LOGGER.warn(
                 "Hardcore Lite was detected, but Afterlife's Delight could not preserve its final heart. "
-                        + "Compatibility may be incomplete until the integration is updated.",
+                        + "The player will remain in Hardcore Lite's normal final-death flow instead.",
                 exception
         );
     }
