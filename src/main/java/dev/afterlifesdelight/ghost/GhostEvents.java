@@ -36,8 +36,8 @@ public final class GhostEvents {
             if (GhostManager.isGhost(player)) {
                 event.setCanceled(true);
                 player.setHealth(Math.max(1.0F, player.getHealth()));
-            } else if (HardcoreLiteCompat.shouldBecomeGhost(player)) {
-                HardcoreLiteCompat.preserveLastHeartForGhost(player);
+            } else if (HardcoreLiteCompat.shouldBecomeGhost(player)
+                    && HardcoreLiteCompat.preserveLastHeartForGhost(player)) {
                 GhostManager.prepareDeathFollowingFoodTransfer(player);
             }
         }
@@ -47,12 +47,14 @@ public final class GhostEvents {
     public static void onConfirmedLivingDeath(LivingDeathEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)
                 || GhostManager.isGhost(player)
-                || !HardcoreLiteCompat.shouldBecomeGhost(player)) {
+                || !HardcoreLiteCompat.shouldBecomeGhost(player)
+                || !HardcoreLiteCompat.preserveLastHeartForGhost(player)) {
             return;
         }
 
         if (event.isCanceled()) {
             GhostManager.restoreDeathFollowingFoodAfterCanceledDeath(player);
+            HardcoreLiteCompat.restorePlayableGameMode(player);
         } else {
             GhostManager.recordDeath(player);
         }
